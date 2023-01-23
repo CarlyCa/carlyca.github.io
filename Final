@@ -1,0 +1,192 @@
+
+<html>
+    <head>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var flightDestination = document.createElement('select');
+flightDestination.id = 'flightDestination';
+flightDestination.name = 'flightDestination';
+flightDestination.innerHTML = '<option value="">Flight Destination</option>' +
+  '<option value="SFO">San Francisco</option>' +
+  '<option value="LAX">Los Angeles</option>' +
+  '<option value="SEA">Seattle</option>' +
+  '<option value="CDG">Paris</option>' +
+  '<option value="LHR">London</option>' +
+  '<option value="JFK">New York</option>' +
+  '<option value="FRA">Frankfurt</option>' +
+  '<option value="HKG">Hong Kong</option>' +
+  '<option value="NRT">Tokyo</option>' +
+  '<option value="AMS">Amsterdam</option>' +
+  '<option value="SIN">Singapore</option>' +
+  '<option value="DXB">Dubai</option>' +
+  '<option value="LAX">Los Angeles</option>' +
+  '<option value="IST">Istanbul</option>' +
+  '<option value="PEK">Beijing</option>' +
+  '<option value="SYD">Sydney</option>' +
+  '<option value="BKK">Bangkok</option>' +
+  '<option value="MEX">Mexico City</option>' +
+  '<option value="DFW">Dallas</option>' +
+  '<option value="PNH">Phnom Penh</option>' +
+  '<option value="ICN">Seoul</option>' +
+  '<option value="MAD">Madrid</option>' +
+  '<option value="CPH">Copenhagen</option>' +
+  '<option value="DEL">Delhi</option>' +
+  '<option value="BCN">Barcelona</option>' +
+  '<option value="PVG">Shanghai</option>' +
+  '<option value="CGK">Jakarta</option>' +
+  '<option value="ATM">Athens</option>' +
+  '<option value="YYZ">Toronto</option>' +
+  '<option value="LAS">Las Vegas</option>' +
+  '<option value="MEL">Melbourne</option>' +
+  '<option value="AKL">Auckland</option>' +
+  '<option value="BOM">Mumbai</option>' +
+  '<option value="KUL">Kuala Lumpur</option>' +
+  '<option value="ORD">Chicago</option>';
+document.body.appendChild(flightDestination);
+
+var flightTime = document.createElement('div');
+flightTime.id = 'flightTime';
+flightTime.innerHTML = '<select id="flightHour" name="flightHour">' +
+  '<option value="">Hour</option>' +
+  '<option value="00">00</option>' +
+  '<option value="01">01</option>' +
+  '<option value="02">02</option>' +
+  '<option value="03">03</option>' +
+  '<option value="04">04</option>' +
+  '<option value="05">05</option>' +
+  '<option value="06">06</option>' +
+  '<option value="07">07</option>' +
+  '<option value="08">08</option>' +
+  '<option value="09">09</option>' +
+  '<option value="10">10</option>' +
+  '<option value="11">11</option>' +
+  '<option value="12">12</option>' +
+  '<option value="13">13</option>' +
+  '<option value="14">14</option>' +
+  '<option value="15">15</option>' +
+  '<option value="16">16</option>' +
+  '<option value="17">17</option>' +
+  '<option value="18">18</option>' +
+  '<option value="19">19</option>' +
+  '<option value="20">20</option>' +
+  '<option value="21">21</option>' +
+  '<option value="22">22</option>' +
+  '<option value="23">23</option>' +
+  '</select>' +
+  '<select id="flightMinute" name="flightMinute">' +
+  '<option value="">Minute</option>' +
+  '<option value="00">00</option>' +
+  '<option value="05">05</option>' +
+  '<option value="10">10</option>' +
+  '<option value="15">15</option>' +
+  '<option value="20">20</option>' +
+  '<option value="25">25</option>' +
+  '<option value="30">30</option>' +
+  '<option value="35">35</option>' +
+  '<option value="40">40</option>' +
+  '<option value="45">45</option>' +
+  '<option value="50">50</option>' +
+  '<option value="55">55</option>' +
+  '</select>';
+document.body.appendChild(flightTime);
+
+var flightNumber = document.createElement('input');
+flightNumber.id = 'flightNumber';
+flightNumber.name = 'flightNumber';
+flightNumber.type = 'text';
+flightNumber.placeholder = 'Flight Number';
+document.body.appendChild(flightNumber);
+
+var flightDestination = document.getElementById('flightDestination');
+flightDestination.style.marginBottom = '50px';
+
+var flightTime = document.getElementById('flightTime');
+flightTime.style.marginBottom = '50px';
+
+var flightDestination = document.getElementById('flightDestination');
+flightDestination.style.width = '50%';
+var flightTime = document.getElementById('flightTime');
+flightTime.style.width = '50%';
+var flightNumber = document.getElementById('flightNumber');
+flightNumber.style.width = '50%';
+
+var flightHour = document.getElementById('flightHour');
+flightHour.style.width = '50%';
+var flightMinute = document.getElementById('flightMinute');
+flightMinute.style.width = '50%';
+
+var header = document.createElement('h1');
+header.innerHTML = 'Internal Tip Line For Safe Cracker';
+document.body.insertBefore(header, flightDestination);
+
+
+
+var submitButton = document.createElement('button');
+submitButton.id = 'submitButton';
+submitButton.innerHTML = 'Submit';
+document.body.appendChild(submitButton);
+
+var submitButton = document.getElementById('submitButton');
+submitButton.style.display = 'block';
+
+var submitButton = document.getElementById('submitButton');
+submitButton.style.marginTop = '50px';
+
+var header = document.getElementById('header');
+header.style.textAlign = 'center';
+
+var subHeader = document.getElementById('subHeader');
+subHeader.style.fontWeight = 'normal';
+
+var subHeader = document.createElement('h2');
+subHeader.id = 'subHeader';
+subHeader.innerHTML = 'It has come to our attention that all agents have been diligently searching for the location of the individual known as the "Safe Cracker." Upon obtaining flight information for this individual, we request that it be immediately entered into the designated form in order to prevent their escape.';
+document.body.insertBefore(subHeader, flightDestination);
+
+document.body.style.backgroundColor = 'black';
+document.body.style.color = 'white';
+
+var subHeader = document.getElementById('subHeader');
+subHeader.style.fontWeight = 'normal';
+
+var subHeader = document.getElementById('subHeader');
+subHeader.style.fontSize = '20px';
+
+var header = document.getElementById('header');
+header.style.textAlign = 'center';
+
+var submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', function() {
+  var flightDestination = document.getElementById('flightDestination').value;
+  var flightHour = document.getElementById('flightHour').value;
+  var flightMinute = document.getElementById('flightMinute').value;
+  var flightNumber = document.getElementById('flightNumber').value;
+  if (flightDestination !== 'NRT' || flightHour !== '10' || flightMinute !== '20' || flightNumber !== 'AA 8404') {
+    alert('We have already checked this flight Manifest and he is not onboard, please recheck information again');
+  }
+});
+
+var submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', function() {
+  var flightDestination = document.getElementById('flightDestination').value;
+  var flightHour = document.getElementById('flightHour').value;
+  var flightMinute = document.getElementById('flightMinute').value;
+  var flightNumber = document.getElementById('flightNumber').value;
+  if (flightDestination === 'NRT' && flightHour === '10' && flightMinute === '20' && flightNumber === 'AA 8404') {
+    alert('Congratulations you have successfully stopped the Safe Cracker. Our Agents are en route to stop them from boarding the flight.');
+  }
+});
+});
+        </script>
+    </head>
+    <body style="margin: 0;">
+        <div style="background-color: black; position: fixed; bottom: 0; width: 100%; height: 20px; padding: 20px; opacity: .85; z-index: 1000;">
+            <svg id="Layer_1" data-name="Layer 1" height="40px" width="40px" style="top: -8px;
+            position: relative;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><defs><style>.cls-1{fill:#fff;}</style></defs><title>openai-symbol-flat-white</title><path class="cls-1" d="M617.24,354a126.36,126.36,0,0,0-10.86-103.79,127.8,127.8,0,0,0-137.65-61.32,126.36,126.36,0,0,0-95.31-42.49A127.81,127.81,0,0,0,251.5,234.89,126.4,126.4,0,0,0,167,296.19a127.82,127.82,0,0,0,15.72,149.86,126.36,126.36,0,0,0,10.86,103.79,127.81,127.81,0,0,0,137.65,61.32,126.36,126.36,0,0,0,95.31,42.49A127.81,127.81,0,0,0,548.5,565.11,126.4,126.4,0,0,0,633,503.81,127.82,127.82,0,0,0,617.24,354ZM426.58,620.49a94.79,94.79,0,0,1-60.85-22c.77-.42,2.12-1.16,3-1.7l101-58.34a16.42,16.42,0,0,0,8.3-14.37V381.69l42.69,24.65a1.52,1.52,0,0,1,.83,1.17V525.43A95.18,95.18,0,0,1,426.58,620.49ZM222.34,533.26A94.74,94.74,0,0,1,211,469.56c.75.45,2.06,1.25,3,1.79l101,58.34a16.44,16.44,0,0,0,16.59,0l123.31-71.2v49.3a1.53,1.53,0,0,1-.61,1.31L352.19,568.05A95.16,95.16,0,0,1,222.34,533.26ZM195.77,312.77a94.71,94.71,0,0,1,49.48-41.68c0,.87-.05,2.41-.05,3.48V391.25a16.41,16.41,0,0,0,8.29,14.36L376.8,476.8l-42.69,24.65a1.53,1.53,0,0,1-1.44.13l-102.11-59A95.16,95.16,0,0,1,195.77,312.77Zm350.74,81.62L423.2,323.19l42.69-24.64a1.53,1.53,0,0,1,1.44-.13l102.11,58.95a95.08,95.08,0,0,1-14.69,171.55c0-.88,0-2.42,0-3.49V408.75A16.4,16.4,0,0,0,546.51,394.39ZM589,330.44c-.75-.46-2.06-1.25-3-1.79L485,270.31a16.46,16.46,0,0,0-16.59,0l-123.31,71.2v-49.3a1.53,1.53,0,0,1,.61-1.31L447.81,232A95.07,95.07,0,0,1,589,330.44ZM321.89,418.31l-42.7-24.65a1.52,1.52,0,0,1-.83-1.17V274.57a95.07,95.07,0,0,1,155.9-73c-.77.42-2.11,1.16-3,1.7l-101,58.34a16.41,16.41,0,0,0-8.3,14.36Zm23.19-50L400,336.59l54.92,31.7v63.42L400,463.41l-54.92-31.7Z"/></svg>
+            <div style="display: inline-block; color: white; vertical-align: top; margin-top: 4px; font-family: Helvetica, sans-serif;">
+                Code generated by <a style="color: white; text-decoration: none; font-weight: bold;" href="https://openai.com/blog/openai-codex/">OpenAI Codex</a>
+            </div>
+        </div>
+    </body>
+</html>
