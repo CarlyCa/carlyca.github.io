@@ -4,213 +4,177 @@
         <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-var bankStatement = document.createElement('div');
-bankStatement.innerHTML = '<h1>Bank Statement</h1>' +
-  '<table>' +
-    '<tr>' +
-      '<th>Date</th>' +
-      '<th>Description</th>' +
-      '<th>Amount</th>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>01/01/2015</td>' +
-      '<td>Salary</td>' +
-      '<td>$1,000.00</td>' +
-    '</tr>' +
-    '<tr>' +
-      '<td>01/01/2015</td>' +
-      '<td>Rent</td>' +
-      '<td>$500.00</td>' +
-    '</tr>' +
-  '</table>';
-document.body.appendChild(bankStatement);
+var table = document.createElement('table');
+var tr = document.createElement('tr');
+var td1 = document.createElement('td');
+var td2 = document.createElement('td');
+var td3 = document.createElement('td');
+td1.innerHTML = 'Date';
+td2.innerHTML = 'Flight Info';
+td3.innerHTML = 'Cost';
+tr.appendChild(td1);
+tr.appendChild(td2);
+tr.appendChild(td3);
+table.appendChild(tr);
+document.body.appendChild(table);
 
-var dates = document.getElementsByTagName('td');
-for (var i = 0; i < dates.length; i++) {
-  if (dates[i].innerHTML.indexOf('/') > -1) {
-    dates[i].innerHTML = '01/01/2022';
-  }
-}
-
-var amounts = document.getElementsByTagName('td');
-for (var i = 0; i < amounts.length; i++) {
-  if (amounts[i].innerHTML.indexOf('$') > -1) {
-    amounts[i].innerHTML = amounts[i].innerHTML.replace('$', '');
-  }
-}
-
-var bankStatement = document.getElementsByTagName('table')[0];
-var newRow = document.createElement('tr');
-newRow.innerHTML = '<td>01/01/2015</td>' +
-  '<td>Salary</td>' +
-  '<td>$1,000.00</td>';
-bankStatement.appendChild(newRow);
-
-var bankStatement = document.getElementsByTagName('table')[0];
 for (var i = 0; i < 30; i++) {
-  var newRow = document.createElement('tr');
-  newRow.innerHTML = '<td>01/01/2015</td>' +
-    '<td>Salary</td>' +
-    '<td>$1,000.00</td>';
-  bankStatement.appendChild(newRow);
+  var tr = document.createElement('tr');
+  var td1 = document.createElement('td');
+  var td2 = document.createElement('td');
+  var td3 = document.createElement('td');
+  td1.innerHTML = 'Date';
+  td2.innerHTML = 'Flight Info';
+  td3.innerHTML = 'Cost';
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tr.appendChild(td3);
+  table.appendChild(tr);
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Salary') > -1) {
-    descriptions[i].innerHTML = 'Flight';
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  var date = new Date(2023, 0, i);
+  rows[i].firstChild.innerHTML = date.toDateString();
+}
+
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  var date = new Date(2023, 0, i);
+  rows[i].firstChild.innerHTML = date.toDateString().substring(4, 10);
+}
+
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  rows[i].children[1].innerHTML = 'Flight ' + Math.floor(Math.random() * 9000);
+}
+
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  if (Math.random() < 0.33) {
+    rows[i].children[1].innerHTML = 'AA Flight ' + Math.floor(Math.random() * 6000);
   }
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    descriptions[i].innerHTML = 'Flight ' + i;
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  if (Math.random() < 0.33) {
+    rows[i].children[1].innerHTML = 'UA Flight ' + Math.floor(Math.random() * 1000);
   }
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    descriptions[i].innerHTML = 'Flight ' + Math.floor(Math.random() * 100);
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  if (rows[i].children[1].innerHTML.substring(0, 2) !== 'AA' && rows[i].children[1].innerHTML.substring(0, 2) !== 'UA') {
+    rows[i].children[1].innerHTML = 'SW Flight ' + Math.floor(Math.random() * 1000);
   }
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    descriptions[i].innerHTML = 'Flight ' + Math.floor(Math.random() * 1000);
-  }
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  rows[i].children[2].innerHTML = '$' + Math.floor(Math.random() * 900 + 100);
 }
 
-var bankStatement = document.getElementsByTagName('table')[0];
-bankStatement.innerHTML = bankStatement.innerHTML.replace('<th>Date</th>', '<th style="padding-right: 50px;">Date</th>');
-bankStatement.innerHTML = bankStatement.innerHTML.replace('<th>Description</th>', '<th style="padding-right: 50px;">Description</th>');
-bankStatement.innerHTML = bankStatement.innerHTML.replace('<th>Amount</th>', '<th style="padding-right: 50px;">Amount</th>');
-
-var dates = document.getElementsByTagName('td');
-for (var i = 1; i < dates.length; i++) {
-  if (dates[i].innerHTML.indexOf('/') > 0) {
-    dates[i].innerHTML = Math.floor(Math.random() * 31) + '/' + Math.floor(Math.random() * 2) + '/2023';
-  }
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  rows[i].children[2].innerHTML = '$' + (Math.floor(Math.random() * 900 + 100) + '.' + Math.floor(Math.random() * 100));
 }
 
-var dates = document.getElementsByTagName('td');
-for (var i = 1; i < dates.length; i++) {
-  if (dates[i].innerHTML.indexOf('/') > 0) {
-    dates[i].innerHTML = Math.floor(Math.random() * 31) + '/' + Math.floor(Math.random() * 2 + 1) + '/2023';
-  }
-}
+var table = document.getElementsByTagName('table')[0];
+table.style.margin = '0 auto';
 
-var dates = document.getElementsByTagName('td');
-for (var i = 1; i < dates.length; i++) {
-  if (dates[i].innerHTML.indexOf('/') > 0) {
-    dates[i].innerHTML = Math.floor(Math.random() * 31 + 1) + '/' + Math.floor(Math.random() * 2 + 1) + '/2023';
-  }
-}
-
-var amounts = document.getElementsByTagName('td');
-for (var i = 0; i < amounts.length; i++) {
-  if (amounts[i].innerHTML.indexOf('$') > -1) {
-    amounts[i].innerHTML = '$' + Math.floor(Math.random() * 1000);
-  }
-}
-
-var amounts = document.getElementsByTagName('td');
-for (var i = 0; i < amounts.length; i++) {
-  if (amounts[i].innerHTML.indexOf('$') > -1) {
-    amounts[i].innerHTML = '$' + Math.floor(Math.random() * 1000) + '.' + Math.floor(Math.random() * 100);
+var rows = document.getElementsByTagName('tr');
+for (var i = 0; i < rows.length; i++) {
+  for (var j = 0; j < rows[i].children.length; j++) {
+    rows[i].children[j].style.padding = '10px';
   }
 }
 
 var rows = document.getElementsByTagName('tr');
 for (var i = 0; i < rows.length; i++) {
-  if (rows[i].innerHTML.indexOf('Rent') > -1) {
-    rows[i].parentNode.removeChild(rows[i]);
+  for (var j = 0; j < rows[i].children.length; j++) {
+    rows[i].children[j].style.padding = '10px';
   }
 }
-
-var bankStatement = document.getElementsByTagName('table')[0];
-bankStatement.style.margin = '0 auto';
-
-var bankStatement = document.getElementsByTagName('h1')[0];
-bankStatement.style.textAlign = 'center';
-
-var logo = document.createElement('img');
-logo.src = 'https://www.vecteezy.com/free-vector/money-bag';
-logo.style.width = '100px';
-logo.style.height = '100px';
-logo.style.margin = '0 auto';
-document.body.appendChild(logo);
-
-var logo = document.getElementsByTagName('img')[0];
-document.body.insertBefore(logo, document.body.firstChild);
-
-var logo = document.getElementsByTagName('img')[0];
-logo.style.display = 'block';
-logo.style.margin = '0 auto';
-
-var logo = document.getElementsByTagName('img')[0];
-logo.src = 'https://media.istockphoto.com/id/522097277/vector/money-bag-icon-on-white-background-vector.jpg?b=1&s=612x612&w=0&k=20&c=jscOlBXixvfJO2MzW7r8ozOEyTl7wo6f7oHe5od6Bdw=';
-
-var logo = document.getElementsByTagName('img')[0];
-logo.style.width = '70px';
-logo.style.height = '70px';
-
-var bankStatement = document.getElementsByTagName('table')[0];
-bankStatement.style.margin = '0 auto';
 
 var rows = document.getElementsByTagName('tr');
-var dates = [];
+for (var i = 0; i < rows.length; i++) {
+  for (var j = 0; j < rows[i].children.length; j++) {
+    rows[i].children[j].style.textAlign = 'left';
+  }
+}
+
+var rows = document.getElementsByTagName('tr');
 for (var i = 1; i < rows.length; i++) {
-  dates.push(rows[i].innerHTML);
+  if (rows[i].firstChild.innerHTML === 'Jan 21') {
+    rows[i].children[1].innerHTML = 'AA Flight 8404';
+  }
 }
-dates.sort();
+
+var header = document.createElement('h1');
+header.innerHTML = 'Bank Statement';
+header.style.textAlign = 'center';
+document.body.insertBefore(header, document.body.firstChild);
+
+var rows = document.getElementsByTagName('tr');
+for (var i = 0; i < rows.length; i++) {
+  var td = document.createElement('td');
+  td.innerHTML = 'More Details';
+  rows[i].appendChild(td);
+}
+
+var rows = document.getElementsByTagName('tr');
+var airports = ['CDG', 'LHR', 'JFK', 'FRA', 'HKG', 'NRT', 'AMS', 'SIN', 'DXB', 'LAX', 'IST', 'PEK', 'SYD', 'BKK', 'MEX', 'DFW', 'PNH', 'ICN', 'MAD', 'CPH', 'DEL', 'BCN', 'PVG', 'CGK', 'ATM', 'YYZ', 'LAS', 'MEL', 'AKL', 'BOM', 'KUL', 'ORD'];
 for (var i = 1; i < rows.length; i++) {
-  rows[i].innerHTML = dates[i - 1];
+  rows[i].children[3].innerHTML = airports[Math.floor(Math.random() * airports.length)];
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    if (Math.random() < 0.33) {
-      descriptions[i].innerHTML = 'UA ' + descriptions[i].innerHTML;
-    }
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  if (rows[i].firstChild.innerHTML === 'Jan 21') {
+    rows[i].children[3].innerHTML = 'HND';
   }
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    if (Math.random() < 0.33 && descriptions[i].innerHTML.indexOf('UA') === -1) {
-      descriptions[i].innerHTML = 'AA ' + descriptions[i].innerHTML;
-    }
+var rows = document.getElementsByTagName('tr');
+for (var i = 1; i < rows.length; i++) {
+  rows[i].children[3].innerHTML = 'ORD -> ' + rows[i].children[3].innerHTML;
+}
+
+var rows = document.getElementsByTagName('tr');
+for (var i = 0; i < rows.length; i++) {
+  for (var j = 0; j < rows[i].children.length; j++) {
+    rows[i].children[j].style.backgroundColor = '#f2f2f2';
   }
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    if (Math.random() < 0.33 && descriptions[i].innerHTML.indexOf('UA') === -1 && descriptions[i].innerHTML.indexOf('AA') === -1) {
-      descriptions[i].innerHTML = 'SW ' + descriptions[i].innerHTML;
-    }
+var header = document.getElementsByTagName('h1')[0];
+header.style.backgroundColor = '#000080';
+
+var header = document.getElementsByTagName('h1')[0];
+header.style.color = '#ffffff';
+
+var header = document.getElementsByTagName('h1')[0];
+header.style.padding = '20px';
+header.style.margin = '0';
+
+var rows = document.getElementsByTagName('tr');
+for (var i = 0; i < rows.length; i++) {
+  for (var j = 0; j < rows[i].children.length; j++) {
+    rows[i].children[j].style.borderBottom = '1px solid #ddd';
   }
 }
 
-var descriptions = document.getElementsByTagName('td');
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    if (descriptions[i].innerHTML.indexOf('UA') === -1 && descriptions[i].innerHTML.indexOf('AA') === -1 && descriptions[i].innerHTML.indexOf('SW') === -1) {
-      descriptions[i].innerHTML = 'VA Flight ' + descriptions[i].innerHTML.split(' ')[1];
+var rows = document.getElementsByTagName('tr');
+for (var i = 0; i < rows.length; i++) {
+  if (i % 2 === 0) {
+    for (var j = 0; j < rows[i].children.length; j++) {
+      rows[i].children[j].style.backgroundColor = '#f2f2f2';
     }
-  }
-}
-
-var descriptions = document.getElementsByTagName('td');
-var airports = ['JFK', 'LAX', 'SFO', 'ORD', 'DFW', 'DEN', 'ATL', 'LAS', 'SEA', 'CLT', 'MIA', 'PHX', 'MCO', 'IAH', 'EWR', 'MSP', 'DTW', 'BOS', 'PHL', 'LGA', 'FLL', 'BWI', 'DCA', 'IAD', 'MDW', 'SLC', 'TPA', 'HNL', 'PDX', 'STL', 'SAN', 'SJC', 'OAK', 'SMF', 'SNA', 'SJC', 'OAK', 'SMF', 'SNA', 'MCI', 'MKE', 'CLE', 'MSY', 'HOU', 'IND', 'RSW', 'PIT', 'CVG', 'BNA', 'MEM', 'RDU', 'SAT', 'SDF', 'AUS', 'CMH', 'PBI', 'SJU', 'BUF', 'BDL', 'ABQ', 'SJC', 'OAK', 'SMF', 'SNA', 'MCI', 'MKE', 'CLE', 'MSY', 'HOU', 'IND', 'RSW', 'PIT', 'CVG', 'BNA', 'MEM', 'RDU', 'SAT', 'SDF', 'AUS', 'CMH', 'PBI', 'SJU', 'BUF', 'BDL', 'ABQ'];
-for (var i = 0; i < descriptions.length; i++) {
-  if (descriptions[i].innerHTML.indexOf('Flight') > -1) {
-    descriptions[i].innerHTML = descriptions[i].innerHTML + ' ' + airports[Math.floor(Math.random() * airports.length)];
+  } else {
+    for (var j = 0; j < rows[i].children.length; j++) {
+      rows[i].children[j].style.backgroundColor = '#ffffff';
+    }
   }
 }
 });
