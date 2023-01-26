@@ -4,177 +4,55 @@
         <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-var flightDestination = document.createElement('select');
-flightDestination.id = 'flightDestination';
-flightDestination.name = 'flightDestination';
-flightDestination.innerHTML = '<option value="">Flight Destination</option>' +
-  '<option value="SFO">San Francisco</option>' +
-  '<option value="LAX">Los Angeles</option>' +
-  '<option value="SEA">Seattle</option>' +
-  '<option value="CDG">Paris</option>' +
-  '<option value="LHR">London</option>' +
-  '<option value="JFK">New York</option>' +
-  '<option value="FRA">Frankfurt</option>' +
-  '<option value="HKG">Hong Kong</option>' +
-  '<option value="NRT">Tokyo</option>' +
-  '<option value="AMS">Amsterdam</option>' +
-  '<option value="SIN">Singapore</option>' +
-  '<option value="DXB">Dubai</option>' +
-  '<option value="LAX">Los Angeles</option>' +
-  '<option value="IST">Istanbul</option>' +
-  '<option value="PEK">Beijing</option>' +
-  '<option value="SYD">Sydney</option>' +
-  '<option value="BKK">Bangkok</option>' +
-  '<option value="MEX">Mexico City</option>' +
-  '<option value="DFW">Dallas</option>' +
-  '<option value="PNH">Phnom Penh</option>' +
-  '<option value="ICN">Seoul</option>' +
-  '<option value="MAD">Madrid</option>' +
-  '<option value="CPH">Copenhagen</option>' +
-  '<option value="DEL">Delhi</option>' +
-  '<option value="BCN">Barcelona</option>' +
-  '<option value="PVG">Shanghai</option>' +
-  '<option value="CGK">Jakarta</option>' +
-  '<option value="ATM">Athens</option>' +
-  '<option value="YYZ">Toronto</option>' +
-  '<option value="LAS">Las Vegas</option>' +
-  '<option value="MEL">Melbourne</option>' +
-  '<option value="AKL">Auckland</option>' +
-  '<option value="BOM">Mumbai</option>' +
-  '<option value="KUL">Kuala Lumpur</option>' +
-  '<option value="ORD">Chicago</option>';
-document.body.appendChild(flightDestination);
+var body = document.body;
+body.style.backgroundColor = '#f0f0f0';
+body.style.fontFamily = 'Helvetica, Arial, sans-serif';
+body.style.fontSize = '16px';
+body.style.lineHeight = '1.5';
+body.style.margin = '0';
+body.style.padding = '0';
 
-var flightTime = document.createElement('div');
-flightTime.id = 'flightTime';
-flightTime.innerHTML = '<select id="flightHour" name="flightHour">' +
-  '<option value="">Hour</option>' +
-  '<option value="00">00</option>' +
-  '<option value="01">01</option>' +
-  '<option value="02">02</option>' +
-  '<option value="03">03</option>' +
-  '<option value="04">04</option>' +
-  '<option value="05">05</option>' +
-  '<option value="06">06</option>' +
-  '<option value="07">07</option>' +
-  '<option value="08">08</option>' +
-  '<option value="09">09</option>' +
-  '<option value="10">10</option>' +
-  '<option value="11">11</option>' +
-  '<option value="12">12</option>' +
-  '<option value="13">13</option>' +
-  '<option value="14">14</option>' +
-  '<option value="15">15</option>' +
-  '<option value="16">16</option>' +
-  '<option value="17">17</option>' +
-  '<option value="18">18</option>' +
-  '<option value="19">19</option>' +
-  '<option value="20">20</option>' +
-  '<option value="21">21</option>' +
-  '<option value="22">22</option>' +
-  '<option value="23">23</option>' +
-  '</select>' +
-  '<select id="flightMinute" name="flightMinute">' +
-  '<option value="">Minute</option>' +
-  '<option value="00">00</option>' +
-  '<option value="05">05</option>' +
-  '<option value="10">10</option>' +
-  '<option value="15">15</option>' +
-  '<option value="20">20</option>' +
-  '<option value="25">25</option>' +
-  '<option value="30">30</option>' +
-  '<option value="35">35</option>' +
-  '<option value="40">40</option>' +
-  '<option value="45">45</option>' +
-  '<option value="50">50</option>' +
-  '<option value="55">55</option>' +
-  '</select>';
-document.body.appendChild(flightTime);
+var header = document.createElement('header');
+header.style.backgroundColor = '#333';
+header.style.color = '#fff';
+header.style.padding = '1em';
+header.innerHTML = '<h1>FBI Tip Line</h1>';
+body.appendChild(header);
 
-var flightNumber = document.createElement('input');
-flightNumber.id = 'flightNumber';
-flightNumber.name = 'flightNumber';
-flightNumber.type = 'text';
-flightNumber.placeholder = 'Flight Number';
-document.body.appendChild(flightNumber);
+var main = document.createElement('main');
+main.style.backgroundColor = '#fff';
+main.style.margin = '0 auto';
+main.style.maxWidth = '40em';
+main.style.padding = '1em';
+main.innerHTML = '<p>Once you have gathered the necessary information, please fill in the form below to alert our team and help us catch the Safe Cracker once and for all</p>';
 
-var flightDestination = document.getElementById('flightDestination');
-flightDestination.style.marginBottom = '50px';
+body.appendChild(main);
 
-var flightTime = document.getElementById('flightTime');
-flightTime.style.marginBottom = '50px';
+var form = document.createElement('form');
+form.style.backgroundColor = '#fff';
+form.style.margin = '0 auto';
+form.style.maxWidth = '40em';
+form.style.padding = '1em';
+form.innerHTML = '<label for="name">Flight Destination:</label><br /><select name="name" id="name"><option value="">Select a destination</option><option value="1">New York</option><option value="2">Los Angeles</option><option value="3">Madrid</option><option value="4">Istanbul</option><option value="5">Shanghai</option><option value="6">Paris</option><option value="7">Tokyo</option><option value="8">Rome</option></select><br /><label for="email">Flight Time:</label><br /><input type="time" name="email" id="email" /><br /><label for="message">Flight Number:</label><br /><textarea name="message" id="message"></textarea><br /><input type="submit" value="Send" />';
+body.appendChild(form);
 
-var flightDestination = document.getElementById('flightDestination');
-flightDestination.style.width = '50%';
-var flightTime = document.getElementById('flightTime');
-flightTime.style.width = '50%';
-var flightNumber = document.getElementById('flightNumber');
-flightNumber.style.width = '50%';
+var footer = document.createElement('footer');
+footer.style.backgroundColor = '#333';
+footer.style.color = '#fff';
+footer.style.padding = '1em';
+footer.innerHTML = '<p>&copy; 2023</p>';
+body.appendChild(footer);
 
-var flightHour = document.getElementById('flightHour');
-flightHour.style.width = '50%';
-var flightMinute = document.getElementById('flightMinute');
-flightMinute.style.width = '50%';
-
-var header = document.createElement('h1');
-header.innerHTML = 'Internal Tip Line For Safe Cracker';
-document.body.insertBefore(header, flightDestination);
-
-
-
-var submitButton = document.createElement('button');
-submitButton.id = 'submitButton';
-submitButton.innerHTML = 'Submit';
-document.body.appendChild(submitButton);
-
-var submitButton = document.getElementById('submitButton');
-submitButton.style.display = 'block';
-
-var submitButton = document.getElementById('submitButton');
-submitButton.style.marginTop = '50px';
-
-var header = document.getElementById('header');
-header.style.textAlign = 'center';
-
-var subHeader = document.getElementById('subHeader');
-subHeader.style.fontWeight = 'normal';
-
-var subHeader = document.createElement('h2');
-subHeader.id = 'subHeader';
-subHeader.innerHTML = 'It has come to our attention that all agents have been diligently searching for the location of the individual known as the "Safe Cracker." Upon obtaining flight information for this individual, we request that it be immediately entered into the designated form in order to prevent their escape.';
-document.body.insertBefore(subHeader, flightDestination);
-
-document.body.style.backgroundColor = 'black';
-document.body.style.color = 'white';
-
-var subHeader = document.getElementById('subHeader');
-subHeader.style.fontWeight = 'normal';
-
-var subHeader = document.getElementById('subHeader');
-subHeader.style.fontSize = '20px';
-
-var header = document.getElementById('header');
-header.style.textAlign = 'center';
-
-var submitButton = document.getElementById('submitButton');
-submitButton.addEventListener('click', function() {
-  var flightDestination = document.getElementById('flightDestination').value;
-  var flightHour = document.getElementById('flightHour').value;
-  var flightMinute = document.getElementById('flightMinute').value;
-  var flightNumber = document.getElementById('flightNumber').value;
-  if (flightDestination !== 'NRT' || flightHour !== '10' || flightMinute !== '20' || flightNumber !== 'AA 8404') {
-    alert('We have already checked this flight Manifest and he is not onboard, please recheck information again');
-  }
-});
-
-var submitButton = document.getElementById('submitButton');
-submitButton.addEventListener('click', function() {
-  var flightDestination = document.getElementById('flightDestination').value;
-  var flightHour = document.getElementById('flightHour').value;
-  var flightMinute = document.getElementById('flightMinute').value;
-  var flightNumber = document.getElementById('flightNumber').value;
-  if (flightDestination === 'NRT' && flightHour === '10' && flightMinute === '20' && flightNumber === 'AA 8404') {
-    alert('Congratulations you have successfully stopped the Safe Cracker. Our Agents are en route to stop them from boarding the flight.');
+var form = document.querySelector('form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  var name = document.querySelector('#name').value;
+  var email = document.querySelector('#email').value;
+  var message = document.querySelector('#message').value;
+  if (name === '7' && email === '10:20' && message === 'AA 8404') {
+    alert('Congratulations you have provided us the information needed to catch the safe cracker. We have deployed teams to catch him before the flight departs. You win!');
+  } else {
+    alert('Sorry, we checked that information and something is incorrect');
   }
 });
 });
