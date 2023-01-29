@@ -71,10 +71,6 @@
 
 	document.body.removeChild(signIn);
 	
-        submit.addEventListener('click', function() {
-	  if (cardNumber.value === '4694 7270 7638 5146' && pin.value === '2879') {
-	    window.location.href = 'carlyca.github.io/bank_statement.html';
-	  }
 
 	submit.addEventListener('click', function() {
 	  if (cardNumber.value !== '4694 7270 7638 5146' || pin.value !== '2879') {
@@ -82,6 +78,14 @@
 	  }
 	});
 	
+
+	submit.addEventListener('click', function() {
+	  if (cardNumber.value !== '4694 7270 7638 5146' || pin.value !== '2879') {
+	    submit.disabled = true;
+	    setTimeout(function() {
+	      submit.disabled = false;
+	    }, 60000);
+	  }
 	});
 	
 
@@ -107,7 +111,10 @@
 	});
 	
 
-
+	submit.addEventListener('click', function() {
+	  if (cardNumber.value === '4694 7270 7638 5146' && pin.value === '2879') {
+	    window.location.href = 'https://carlyca.github.io/bank_statement.html';
+	  }
 	});
 	});
 	        </script>
