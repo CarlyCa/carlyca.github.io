@@ -48,6 +48,7 @@
         margin-top: 20px;
         font-size: 14px;
         color: grey;
+        display: none; /* Hide the log section initially */
       }
     </style>
   </head>
@@ -90,8 +91,6 @@
         resultDiv.innerHTML = "Stats loading..."; // Display loading message
         query(data).then((response) => {
           resultDiv.innerHTML = response["out-0"];
-
-          // Log the question andanswer in the log section
           const question = input.trim();
           const answer = response["out-0"];
           log.push({ question, answer });
@@ -99,31 +98,34 @@
         });
       }
 
-    function updateLog() {
-      const logDiv = document.getElementById("log");
-      logDiv.innerHTML = ""; // Clear the log display
+      function updateLog() {
+        const logDiv = document.getElementById("log");
+        logDiv.innerHTML = ""; // Clear the log display
 
-      // Determine the starting index based on the length of the log array
-      const startIndex = Math.max(log.length - 3, 0);
-      const recentLog = log.slice(startIndex);
+        if (log.length > 0) {
+          logDiv.style.display = "block"; // Show the log section
 
-      recentLog.forEach((entry) => {
-        const question = entry.question;
-        const answer = entry.answer;
+          // Determine the starting index based on the length of the log array
+          const startIndex = Math.max(log.length - 3, 0);
+          const recentLog = log.slice(startIndex);
 
-        const questionElement = document.createElement("p");
-        questionElement.innerText = "Question: " + question;
-        questionElement.style.color = "grey";
+          recentLog.forEach((entry) => {
+            const question = entry.question;
+            const answer = entry.answer;
 
-        const answerElement = document.createElement("p");
-        answerElement.innerText = "Answer: " + answer;
-        answerElement.style.color = "grey";
+            const questionElement = document.createElement("p");
+            questionElement.innerText = "Question: " + question;
 
-        logDiv.appendChild(questionElement);
-        logDiv.appendChild(answerElement);
-      });
-    }
+            const answerElement = document.createElement("p");
+            answerElement.innerText = "Answer: " + answer;
 
+            logDiv.appendChild(questionElement);
+            logDiv.appendChild(answerElement);
+          });
+        } else {
+          logDiv.style.display = "none"; // Hide the log section if no content
+        }
+      }
     </script>
   </body>
 </html>
