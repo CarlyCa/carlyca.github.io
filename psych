@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Interaction Example</title>
+  <style>
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .chat-bubble {
+      background-color: #f1f1f1;
+      color: #333;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+    
+    .user-bubble {
+      align-self: flex-end;
+      background-color: #a6e3c7;
+      color: #333;
+    }
+    
+    .bot-bubble {
+      align-self: flex-start;
+      background-color: #c7d6e3;
+      color: #333;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Handle form submission
+      $('form').submit(function(event) {
+        event.preventDefault(); // Prevent page refresh on form submit
+
+        // Get user input values
+        var question = $('#question').val();
+        var url = $('#url').val();
+        
+        // Create payload
+        var payload = {
+          "in-0": question,
+          "url-0": url
+        };
+        
+        // Display user input
+        appendBubble('user', question);
+        
+        // Make API request
+        $.ajax({
+          url: "https://www.stack-inference.com/run_deployed_flow?flow_id=645b98e21fa22506aa50935f&org=ac522f2a-ccb2-4608-8bab-3e1ccf74af42",
+          type: "POST",
+          headers: {
+            "Authorization": "Bearer f39536ea-6cd4-4afe-ac99-bd9babd2cd21",
+            "Content-Type": "application/json"
+          },
+          dataType: "json",
+          data: JSON.stringify(payload),
+          success: function(response) {
+            // Handle API response
+            console.log(response); // You can modify this to display the response on the webpage
+            
+            // Display bot response
+            appendBubble('bot', response); 
+          },
+          error: function(xhr, status, error) {
+            console.error(error); // Handle errors here
+          }
+        });
+        
+        // Clear input fields
+        $('#question').val('');
+        $('#url').val('');
+      });
+      
+      // Function to append chat bubble to the conversation
+      function appendBubble(who, message) {
+        var bubbleClass = (who === 'user') ? 'user-bubble' : 'bot-bubble';
+        var bubbleHtml = '<div class="chat-bubble ' + bubbleClass + '">' + message + '</div>';
+        $('.chat-container').append(bubbleHtml);
+        
+        // Scroll to the bottom of the chat container
+        var chatContainer = $('.chat-container');
+        chatContainer.scrollTop(chatContainer[0].scrollHeight);
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>API Interaction Example</h1>
+  
+  <div class="chat-container">
+    <div class="chat-bubble bot-bubble">Welcome to the Chatbot</div>
+  </div>
+  
+  <form>
+    <input type="text" id="question" name="question" placeholder="Enter your question">
+    <input type="text" id="url" name="url" placeholder="Enter the URL">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
