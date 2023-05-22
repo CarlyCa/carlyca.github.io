@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>API Test</title>
+    <title>Chatbot Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="hr_style.css">
   </head>
   <body>
-    <form onsubmit="submitForm(event)">
-      <input type="text" id="input" placeholder="Ask a stats question" />
-      <button type="submit">Submit</button>
-    </form>
-    <div id="result"></div>
-    <div id="log"></div>
+    <div class="chat-container">
+      <div class="chat-log" id="log"></div>
+      <form class="chat-input-form" onsubmit="submitForm(event)">
+        <input type="text" id="input" placeholder="Type a message" />
+        <button type="submit">Send</button>
+      </form>
+    </div>
     <script src="hr_script.js"></script>
   </body>
 </html>
