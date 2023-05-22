@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("https://cdn.midjourney.com/57c44160-3af5-4d1b-a094-3d1010d149a9/grid_0.png");
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: rgb(0, 120, 140);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#result {
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#log {
+  padding: 20px;
+  background-color: lightgrey;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: grey;
+  display: none;
+}
