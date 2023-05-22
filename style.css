@@ -2,6 +2,9 @@ body {
   font-family: Arial, sans-serif;
   background-image: url("https://cdn.midjourney.com/57c44160-3af5-4d1b-a094-3d1010d149a9/grid_0.png");
   background-color: #f2f2f2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 10px;
 }
 
@@ -19,20 +22,28 @@ body {
   max-height: 400px;
 }
 
-.chat-input-form {
-  display: flex;
+.question-box {
+  background-color: #f1f0f0;
+  padding: 10px;
+  border-radius: 10px;
   margin-top: 10px;
 }
 
-.chat-input-form input[type="text"] {
+#chat-form {
+  display: flex;
+  align-items: center;
+}
+
+#input {
   flex: 1;
   padding: 10px;
   border: none;
   border-radius: 5px;
   font-size: 14px;
+  text-align: right;
 }
 
-.chat-input-form button[type="submit"] {
+button[type="submit"] {
   padding: 10px 20px;
   background-color: rgb(0, 120, 140);
   border: none;
@@ -51,13 +62,14 @@ body {
   max-width: 80%;
 }
 
+.bot-message {
+  align-self: flex-start;
+  background-color: #d8d8d8;
+}
+
 .user-message {
   align-self: flex-end;
   background-color: rgb(0, 120, 140);
   color: white;
-}
-
-.bot-message {
-  align-self: flex-start;
-  background-color: #d8d8d8;
+  margin-left: auto;
 }
