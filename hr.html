@@ -95,4 +95,34 @@
         });
       }
 
-      function updateLog
+      function updateLog() {
+        const logDiv = document.getElementById("log");
+        logDiv.innerHTML = ""; // Clear the log display
+
+        if (log.length > 0) {
+          logDiv.style.display = "block"; // Show the log section
+
+          // Determine the starting index based on the length of the log array
+          const startIndex = Math.max(log.length - 3, 0);
+          const recentLog = log.slice(startIndex);
+
+          recentLog.forEach((entry) => {
+            const question = entry.question;
+            const answer = entry.answer;
+
+            const questionElement = document.createElement("p");
+            questionElement.innerText = "Question: " + question;
+
+            const answerElement = document.createElement("p");
+            answerElement.innerText = "Answer: " + answer;
+
+            logDiv.appendChild(questionElement);
+            logDiv.appendChild(answerElement);
+          });
+        } else {
+          logDiv.style.display = "none"; // Hide the log section if no content
+        }
+      }
+    </script>
+  </body>
+</html>
