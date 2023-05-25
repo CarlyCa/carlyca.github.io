@@ -1,105 +1,272 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>API Interaction Example</title>
+  <title>Chatbot</title>
   <style>
+    /* Overall chat container styles */
     .chat-container {
-      display: flex;
-      flex-direction: column;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    
-    .chat-bubble {
-      background-color: #f1f1f1;
-      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       padding: 10px;
-      margin: 5px 0;
-      border-radius: 5px;
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
     }
-    
-    .user-bubble {
+
+    /* Message log styles */
+    .message-log {
+      margin-bottom: 10px;
+    }
+
+    /* Individual message container styles */
+    .message-container {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    /* User message styles */
+    .user-message {
       align-self: flex-end;
-      background-color: #a6e3c7;
-      color: #333;
+      background-color: #007bff;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 70%;
+      word-wrap: break-word;
+      text-align: right;
+      margin-left: auto;
     }
-    
-    .bot-bubble {
+
+    /* Bot message styles */
+    .bot-message {
       align-self: flex-start;
-      background-color: #c7d6e3;
-      color: #333;
+      background-color: #28a745;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    /* Hidden class */
+    .hidden {
+      display: none;
+    }
+
+    /* Loading message styles */
+    .loading-message {
+      font-style: italic;
+      color: #888;
+      display: inline-block;
+    }
+
+    .loading-dots::after {
+      content: "";
+      display: inline-block;
+      animation: loading 1s infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        content: ". ";
+      }
+      33% {
+        content: ".. ";
+      }
+      66% {
+        content: "... ";
+      }
+    }
+
+    /* Result box styles */
+    .result {
+      font-weight: bold;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      margin-top: 10px;
+    }
+
+    /* Button styles */
+    .button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0069d9;
+    }
+
+    /* Chat input styles */
+    .chat-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Background image styles */
+    body {
+      background-image: url("https://media.discordapp.net/attachments/1008571150873395220/1110970990814560348/Carly_a_nature_background_calm_that_can_be_used_for_a_website_24391d83-ffcf-4502-999a-3ec8557656e0.png?width=968&height=968");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .button-container .button {
+      margin: 5px;
     }
   </style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Handle form submission
-      $('form').submit(function(event) {
-        event.preventDefault(); // Prevent page refresh on form submit
-
-        // Get user input values
-        var question = $('#question').val();
-        var url = $('#url').val();
-        
-        // Create payload
-        var payload = {
-          "in-0": question,
-          "url-0": url
-        };
-        
-        // Display user input
-        appendBubble('user', question);
-        
-        // Make API request
-        $.ajax({
-          url: "https://www.stack-inference.com/run_deployed_flow?flow_id=645b98e21fa22506aa50935f&org=ac522f2a-ccb2-4608-8bab-3e1ccf74af42",
-          type: "POST",
-          headers: {
-            "Authorization": "Bearer f39536ea-6cd4-4afe-ac99-bd9babd2cd21",
-            "Content-Type": "application/json"
-          },
-          dataType: "json",
-          data: JSON.stringify(payload),
-          success: function(response) {
-            // Handle API response
-            console.log(response); // You can modify this to display the response on the webpage
-            
-            // Display bot response
-            appendBubble('bot', response); 
-          },
-          error: function(xhr, status, error) {
-            console.error(error); // Handle errors here
-          }
-        });
-        
-        // Clear input fields
-        $('#question').val('');
-        $('#url').val('');
-      });
-      
-      // Function to append chat bubble to the conversation
-      function appendBubble(who, message) {
-        var bubbleClass = (who === 'user') ? 'user-bubble' : 'bot-bubble';
-        var bubbleHtml = '<div class="chat-bubble ' + bubbleClass + '">' + message + '</div>';
-        $('.chat-container').append(bubbleHtml);
-        
-        // Scroll to the bottom of the chat container
-        var chatContainer = $('.chat-container');
-        chatContainer.scrollTop(chatContainer[0].scrollHeight);
-      }
-    });
-  </script>
 </head>
 <body>
-  <h1>API Interaction Example</h1>
-  
   <div class="chat-container">
-    <div class="chat-bubble bot-bubble">Welcome to the Chatbot</div>
+    <h2 style="text-align: center; font-weight: bold;">5 Factor Personality Test</h2>
+    <p style="text-align: center; font-size: 12px;">Start chatting with the bot. When you are ready to get your score, click the button below. We recommend at least 10 chats with our bot to get an accurate score.</p>
+    <div class="message-log" id="log"></div>
+    <form id="chat-form">
+      <textarea id="input" class="chat-input" placeholder="Type your message..." required></textarea>
+      <div class="button-container">
+        <button id="submit-button" class="button" style="padding: 14px 20px;">Submit</button>
+        <button id="get-score-button" class="button">Get My Score</button>
+      </div>
+    </form>
+    <div id="loading-message" class="hidden"></div>
+    <div id="result" class="hidden">
+      <p class="result-text"></p>
+    </div>
   </div>
-  
-  <form>
-    <input type="text" id="question" name="question" placeholder="Start chatting with the bot">
-    <button type="submit">Submit</button>
-  </form>
+  <script>
+    let log = []; // Array to store the chat messages
+
+    async function queryChatbot(data) {
+      const response = await fetch(
+        "https://www.stack-inference.com/run_deployed_flow?flow_id=64666fed14a1c028d69828d4&org=ac522f2a-ccb2-4608-8bab-3e1ccf74af42",
+        {
+          headers: {
+            'Authorization': 'Bearer f39536ea-6cd4-4afe-ac99-bd9babd2cd21',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      return result["out-0"];
+    }
+
+    async function queryScore(data) {
+      const response = await fetch(
+        "https://www.stack-inference.com/run_deployed_flow?flow_id=64666fd514a1c028d69828d2&org=ac522f2a-ccb2-4608-8bab-3e1ccf74af42",
+        {
+          headers: {
+            'Authorization': 'Bearer f39536ea-6cd4-4afe-ac99-bd9babd2cd21',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      return result["out-0"];
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      const input = document.getElementById("input").value;
+      if (input.trim() !== "") {
+        const logDiv = document.getElementById("log");
+
+        const userMessageDiv = document.createElement("div");
+        userMessageDiv.classList.add("message-container", "user-message");
+        userMessageDiv.innerText = input;
+        logDiv.appendChild(userMessageDiv);
+
+        const data = {
+          "in-0": input,
+          "user_id": "<USER_ID_FOR_MEMORY_OF_LLM>"
+        };
+
+        const botMessageDiv = document.createElement("div");
+        botMessageDiv.classList.add("message-container", "bot-message");
+        logDiv.appendChild(botMessageDiv);
+
+        // Display loading dots while waiting for bot's response
+        const loadingDots = document.createElement("span");
+        loadingDots.classList.add("loading-dots");
+        loadingDots.innerText = "...";
+        botMessageDiv.appendChild(loadingDots);
+
+        queryChatbot(data).then((response) => {
+          // Remove loading dots
+          botMessageDiv.removeChild(loadingDots);
+
+          // Display bot's response
+          botMessageDiv.innerText = response.replace("Chatbot: ", "");
+          logDiv.appendChild(botMessageDiv);
+
+          log.push({ question: input, answer: response });
+        });
+
+        document.getElementById("input").value = "";
+      }
+    }
+
+    async function getScore() {
+      const logText = log.map(entry => entry.question).join('\n');
+
+      const loadingMessageDiv = document.getElementById("loading-message");
+      loadingMessageDiv.innerHTML = "Score Loading<span class='loading-dots'></span>";
+      loadingMessageDiv.classList.remove("hidden");
+
+      const data = {
+        "in-0": logText
+      };
+
+      const response = await queryScore(data);
+
+      const resultDiv = document.getElementById("result");
+      const resultTextDiv = resultDiv.querySelector(".result-text");
+      resultTextDiv.classList.add("result"); // Add result styling
+      resultTextDiv.innerText = response;
+
+      resultDiv.classList.remove("hidden");
+
+      loadingMessageDiv.classList.add("hidden");
+    }
+
+    document.getElementById("chat-form").addEventListener("submit", submitForm);
+    document.getElementById("get-score-button").addEventListener("click", getScore);
+
+    // Initial greeting message
+    const initialMessage = "Hey! How's your day going?";
+
+    // Display initial message
+    const logDiv = document.getElementById("log");
+    const botMessageDiv = document.createElement("div");
+    botMessageDiv.classList.add("message-container", "bot-message");
+    botMessageDiv.innerText = initialMessage;
+    logDiv.appendChild(botMessageDiv);
+
+    log.push({ question: "", answer: initialMessage });
+  </script>
 </body>
 </html>
