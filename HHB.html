@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Title</title>
+  <script type="module" src="https://hornetsbi.koresoftware.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #sidebar {
+      height: 100vh;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      padding-top: 20px;
+      color: white;
+    }
+
+    #content {
+      margin-left: 260px;
+      padding: 20px;
+    }
+
+    .menu-item {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      background-color: #444;
+      padding: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-item:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown-option {
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h2>Sidebar</h2>
+    <div class="menu-item">
+      F&B
+      <div class="dropdown">
+        <div class="dropdown-option">Option 1</div>
+        <div class="dropdown-option">Option 2</div>
+        <div class="dropdown-option">Option 3</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Ticketing
+      <div class="dropdown">
+        <div class="dropdown-option">Option 1</div>
+        <div class="dropdown-option">Option 2</div>
+        <div class="dropdown-option">Option 3</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Arena
+      <div class="dropdown">
+        <div class="dropdown-option">Option 1</div>
+        <div class="dropdown-option">Option 2</div>
+        <div class="dropdown-option">Option 3</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Executive
+      <div class="dropdown">
+        <div class="dropdown-option">Option 1</div>
+        <div class="dropdown-option">Option 2</div>
+        <div class="dropdown-option">Option 3</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      Partnerships
+      <div class="dropdown">
+        <div class="dropdown-option">Option 1</div>
+        <div class="dropdown-option">Option 2</div>
+        <div class="dropdown-option">Option 3</div>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <h1>Embedded Tableau Visualization</h1>
+    <tableau-viz id="tableau-viz" src="https://hornetsbi.koresoftware.com/t/CHH/views/InternalTechnologyDashboard/HSEVENDORS" width="1600" height="950" toolbar="bottom"></tableau-viz>
+  </div>
+</body>
+</html>
