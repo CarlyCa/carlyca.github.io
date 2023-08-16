@@ -6,6 +6,8 @@
   <title>Hornets Home Base</title>
   <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     body {
       margin: 0;
@@ -77,6 +79,39 @@
       position: relative; /* Add positioning */
       z-index: 2; /* Ensure top bar stays on top */
     }
+    #sidebar {
+      transition: width 0.3s ease;
+      /* ... Other sidebar styles ... */
+    }
+
+    #content {
+      transition: margin-left 0.3s ease;
+      /* ... Other content styles ... */
+    }
+
+    #sidebar.collapsed {
+      width: 60px;
+    }
+
+    #content.collapsed {
+      margin-left: 70px; /* Adjust as needed */
+    }
+
+    #sidebar.collapsed .menu-item {
+      padding: 10px;
+      text-align: center;
+    }
+
+    #sidebar.collapsed .carrot {
+      display: none;
+    }
+
+    #collapse-icon {
+      position: fixed;
+      bottom: 20px;
+      left: 10px;
+      cursor: pointer;
+    }
 
   </style>
 </head>
@@ -107,9 +142,12 @@
           Innovation <span class="carrot">▼</span>
           <div class="dropdown">
             <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/InternalTechnologyDashboard/HSEVENDORS', 1600, 927)">Internal Tech Dashboard</div>
-            <a href="https://nba.brightidea.com/HornetsInnovation/boards" target="_blank" class="dropdown-option" style="text-decoration: none; color: inherit;">Innovation Hub - BrightIdea</a>
+            <a href="https://nba.brightidea.com/HornetsInnovation/boards" target="_blank" class="dropdown-option">Innovation Hub - BrightIdea</a>
 
           </div>
+        </div>
+        <div id="collapse-icon" onclick="toggleSidebar()">
+          <i class="fas fa-chevron-circle-left fa-lg"></i>
         </div>
         <!-- Add more menu items with dropdowns as needed -->
       </div>
@@ -140,6 +178,14 @@ dropdownOptions.forEach(option => {
       tableauViz.setAttribute('width', width);
       tableauViz.setAttribute('height', height);
     }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('content');
+      sidebar.classList.toggle('collapsed');
+      content.classList.toggle('collapsed');
+    }
+
   </script>
 </body>
 </html>
