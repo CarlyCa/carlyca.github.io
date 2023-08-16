@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website Title</title>
-  <script type="module" src="https://hornetsbi.koresoftware.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+  <title>Hornets Home Base</title>
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Nunito Sans', sans-serif;
     }
 
     #sidebar {
@@ -30,6 +31,11 @@
     .menu-item {
       padding: 10px 20px;
       cursor: pointer;
+      border-bottom: 1px solid #444;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
     }
 
     .dropdown {
@@ -39,6 +45,9 @@
       position: relative;
       z-index: 1;
     }
+    .dropdown.open {
+      display: block;
+    }
 
     .menu-item:hover .dropdown {
       display: block;
@@ -46,56 +55,91 @@
 
     .dropdown-option {
       padding: 8px;
+      cursor: pointer;
     }
+
+    .dropdown-option:hover {
+      background-color: #555;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      background-color: black;
+      color: white;
+      padding: 10px;
+    }
+    #topbar {
+      background-color: black; /* Black background */
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      position: relative; /* Add positioning */
+      z-index: 2; /* Ensure top bar stays on top */
+    }
+
   </style>
 </head>
-<body>
-  <div id="sidebar">
-    <h2>Sidebar</h2>
-    <div class="menu-item">
-      F&B
-      <div class="dropdown">
-        <div class="dropdown-option">Option 1</div>
-        <div class="dropdown-option">Option 2</div>
-        <div class="dropdown-option">Option 3</div>
+<body>  <div id="topbar">
+  <h2>Hornets Home Base</h2>
+</div>
+    <div id="sidebar">
+        <h2>  HSE</h2>
+        <div class="menu-item" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504', '1600', '950')">
+          F&B <span class="carrot">▼</span>
+          <div class="dropdown">
+            <div class="dropdown-option">
+              Mobile Ordering <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504', '1600', '950')">Season Summary</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/GamebyGameSummary/83bdf077-6191-4915-b34e-68971c8b3b70/686ede77-785f-49fa-8194-408287b12522', '1600', '950')">Game Summary</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MobileOrderTransactions/Season-RawData?:iid=3', '1600', '950')">All Time Season Data</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MobileOrderTransactions/OneGame-RawData?:iid=3', '1600', '950')">One Game Raw Data</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MobileOrderTransactions/OneCustomer?:iid=3', '1600', '950')">One Customer View</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MobileOrderTransactions/GoalTracking?:iid=3', '1600', '950')">Goal Tracking by Drop Count</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MobileOrderTransactions/Pacing?:iid=3', '1600', '950')">Pacing</div>
+                <!-- Add more sub-options as needed -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" >
+          Innovation <span class="carrot">▼</span>
+          <div class="dropdown">
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/InternalTechnologyDashboard/HSEVENDORS', 1600, 927)">Internal Tech Dashboard</div>
+            <a href="https://nba.brightidea.com/HornetsInnovation/boards" target="_blank" class="dropdown-option" style="text-decoration: none; color: inherit;">Innovation Hub - BrightIdea</a>
+
+          </div>
+        </div>
+        <!-- Add more menu items with dropdowns as needed -->
       </div>
-    </div>
-    <div class="menu-item">
-      Ticketing
-      <div class="dropdown">
-        <div class="dropdown-option">Option 1</div>
-        <div class="dropdown-option">Option 2</div>
-        <div class="dropdown-option">Option 3</div>
-      </div>
-    </div>
-    <div class="menu-item">
-      Arena
-      <div class="dropdown">
-        <div class="dropdown-option">Option 1</div>
-        <div class="dropdown-option">Option 2</div>
-        <div class="dropdown-option">Option 3</div>
-      </div>
-    </div>
-    <div class="menu-item">
-      Executive
-      <div class="dropdown">
-        <div class="dropdown-option">Option 1</div>
-        <div class="dropdown-option">Option 2</div>
-        <div class="dropdown-option">Option 3</div>
-      </div>
-    </div>
-    <div class="menu-item">
-      Partnerships
-      <div class="dropdown">
-        <div class="dropdown-option">Option 1</div>
-        <div class="dropdown-option">Option 2</div>
-        <div class="dropdown-option">Option 3</div>
-      </div>
-    </div>
-  </div>
   <div id="content">
-    <h1>Embedded Tableau Visualization</h1>
-    <tableau-viz id="tableau-viz" src="https://hornetsbi.koresoftware.com/t/CHH/views/InternalTechnologyDashboard/HSEVENDORS" width="1600" height="950" toolbar="bottom"></tableau-viz>
+    <tableau-viz id="tableauViz" src="https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504" width="1366" height="952" hide-tabs toolbar="bottom"></tableau-viz>
   </div>
+  <script>
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    menuItems.forEach(menuItem => {
+      const dropdown = menuItem.querySelector('.dropdown');
+
+      menuItem.addEventListener('click', () => {
+        // Toggle the 'open' class on the dropdown
+        dropdown.classList.toggle('open');
+      });
+    });
+    const dropdownOptions = document.querySelectorAll('.dropdown-option');
+
+dropdownOptions.forEach(option => {
+  option.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevent the click from propagating to the main menu-item
+  });
+});
+    function loadDashboard(src, width, height) {
+      const tableauViz = document.getElementById('tableauViz');
+      tableauViz.setAttribute('src', src);
+      tableauViz.setAttribute('width', width);
+      tableauViz.setAttribute('height', height);
+    }
+  </script>
 </body>
 </html>
