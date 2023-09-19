@@ -9,26 +9,56 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
-    body {
+ body {
       margin: 0;
       font-family: 'Nunito Sans', sans-serif;
     }
 
-    #sidebar {
-      height: 100vh;
-      width: 250px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #333;
-      padding-top: 20px;
-      color: white;
-    }
+#sidebar {
+  height: 100vh; /* Set a fixed height for the sidebar */
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  padding-top: 20px;
+  color: white;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+  /* Add more space between menu items */
+  margin-bottom: 10px;
+}
+
 
     #content {
-      margin-left: 260px;
       padding: 20px;
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* Hide any overflowing content */
+      max-width: 100%;
     }
+
+    #tableauViz {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      background-color: black;
+      color: white;
+      padding: 10px;
+    }
+
 
     .menu-item {
       padding: 10px 20px;
@@ -39,7 +69,6 @@
     .menu-item:last-child {
       border-bottom: none;
     }
-
     .dropdown {
       display: none;
       background-color: #444;
@@ -47,22 +76,14 @@
       position: relative;
       z-index: 1;
     }
+
     .dropdown.open {
       display: block;
     }
-
-    .menu-item:hover .dropdown {
-      display: block;
-    }
-
     .dropdown-option {
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .dropdown-option:hover {
-      background-color: #555;
-    }
+      padding: 10px; /* Add padding to create space between options */
+      /* ... Existing styles ... */
+    } 
 
     h1 {
       text-align: center;
@@ -120,7 +141,8 @@
 </div>
     <div id="sidebar">
         <h2>  HSE</h2>
-        <div class="menu-item" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504', '1600', '950')">
+        <!--F&B-->
+        <div class="menu-item" onclick="loadDashboard('<script type='module' src='https://hornetsbi.koresoftware.com/javascripts/api/tableau.embedding.3.latest.min.js'></script><tableau-viz id='tableau-viz' src='https://hornetsbi.koresoftware.com/t/CHH/views/HornetsHomeBase/HornetsHomeBase' width='1600' height='927')">
           F&B <span class="carrot">▼</span>
           <div class="dropdown">
             <div class="dropdown-option">
@@ -139,8 +161,129 @@
           </div>
         </div>
 
+        <!--PARTNERSHIPS-->
+
+        <div class="menu-item" onclick="loadDashboard('<script type='module' src='https://hornetsbi.koresoftware.com/javascripts/api/tableau.embedding.3.latest.min.js'></script><tableau-viz id='tableau-viz' src='https://hornetsbi.koresoftware.com/t/CHH/views/HornetsHomeBase/HornetsHomeBase' width='1600' height='927')">
+          PARTNERSHIPS <span class="carrot">▼</span>
+          <div class="dropdown">
+            <div class="dropdown-option">
+              Key Reports <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/HornetsPartnerDetailReport/RevenueGoals' , '1600', '1250')">Revenue Goals</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/HornetsPartnerDetailReport/PartnerDetailSummary' , '1600', '2000')">Partner Detail Report</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/SALES-PipelinebyIndustry', '1600', '850')">Sales Pipeline</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/PartnershipRenewalTrackerLive/NEW-RenewalTracker', '1600', '1927')">Renewal Tracker</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/FUTURE-3YearOutlook, '1366', '818')">Multi-year Outlook /div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/PartnershipsAnalytics-Inventory-LIVE/WHOHASWHAT-PartnersbyAsset, '1700', '900')">Who Has What - Live</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/PARTNERS-DealSheetEfficiency?:iid=17', '1600', '950')">Deal Sheet Efficiency</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/ExecutiveSummary', '1800', '850')">Executive Summary</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/PARTNERS-ContractStatus', '1600', '900')">Contract Status</div>
+                <!-- Add more sub-options as needed -->
+              </div>
+            </div>
+          </div>
+          <div class="dropdown-option">
+            Assets <span class="carrot">▼</span>
+            <div class="dropdown">
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/PartnershipsAnalytics-Inventory-LIVE/WHOHASWHAT-DealSheetAssets?:iid=2', '7600', '818')">Parnter By Asset</div>
+              <div class="dropdown-option" onclick="loadDashboard('', '1600', '950')">Asset by Partner</div><!--NEED THIS ONE-->
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/AssetsbyObjective/ObjectivesbyAsset', '1700', '900')">Objectives by Asset</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/AssetsbyObjective/AssetsbyObjective', '1700', '2050')">Assets by Objectives</div>
+              <!-- Add more sub-options as needed -->
+            </div>
+          </div>
+
+          <div class="dropdown-option">
+            Sales Reports <span class="carrot">▼</span>
+            <div class="dropdown">
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/SALES-PipelinebyIndustry', '1600', '850')">Sales Pipeline</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/SALES-PipelinebyIndustry', '1600', '850')">Pipeline by Industry</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/FUTURE-RecentActivity', '1700', '1150')">Activities by Prospect</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/FUTURE-RecentActivity', '1700', '1150')">Recent Activities</div>
+              <div class="dropdown-option" onclick="loadDashboard('', '1600', '950')">Upcoming Activities</div> <!--NEED HERE-->
+              <div class="dropdown-option" onclick="loadDashboard('', '1600', '950')">Breadcrumbs</div><!--NEED HERE-->
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/PartnershipsHome/6Ways', '1366', '795')">Ways to Find New Partners</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/BrandObjectives/DealBuilder, '1600', '950')">Interactive Deal Builder</div>
+              <!-- Add more sub-options as needed -->
+            </div>
+          </div>
+
+
+          <div class="dropdown-option">
+            Renewal Reports <span class="carrot">▼</span>
+            <div class="dropdown">
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/PartnershipRenewalTrackerLive/NEW-RenewalTracker4', '1600', '927')">Renewal Tracker</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/HornetsPartnerships-AnalyticsWorkbookEditedKOREQ22017/FUTURE-3YearOutlook', '1366', '818')">Multi-year Outlook</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/PartnershipsHome/Recaps', '1600', '950')">Recap Dashboards</div>
+              <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MobileOrderTransactions/OneGame-RawData?:iid=3', '1366', '795')">Partner Tickets</div>
+              <div class="dropdown-option" onclick="loadDashboard(('https://hornetsbi.koresoftware.com/#/site/CHH/views/BrandObjectives/DealBuilder, '1600', '950')">Interactive Deal Builder</div>
+              <!-- Add more sub-options as needed -->
+            </div>
+          </div>
+
+        </div>
+        </div>
+
+        <!--TICKETING-->
+        <div class="menu-item" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504', '1600', '950')">
+          TICKETING <span class="carrot">▼</span>
+          <div class="dropdown">
+            <div class="dropdown-option">
+              Key Reports <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/HouseDashboard/HouseDashboard', '1200', '2600')">House Dashboard</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/RevenuePacing_0/YearOverYear', '1600', '950')">Revenue Pacing</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/GameSummary23-24/GameSummaryDashboardNew', '1600', '1700')">Game Summary</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/RevenuePacing_0/IndividualGames', '1600', '950')">Individual Games</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/RevenuePacing/BigNumber', '1000', '1800')">Big Number Projections</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/AttendanceProjections22-23/AttendanceProjections', '1600', '950')">Game Revenue Projections</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/AttendanceProjections22-23/AttendanceProjections', '1600', '950')">Attendance Projections</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MySTMDashboard21-22/HiveSocietyDashboard, '1600', '827')">Hive Society Key Stats</div>
+                <!-- Add more sub-options as needed -->
+                </div>
+
+            <div class="dropdown-option">
+              Pacing and Big Number <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/CRMRevenuePacing/BigNumberCRMPacing', '1366', '2050')">CRM Revenue Pacing</div>
+              </div>
+            </div>
+
+            <div class="dropdown-option">
+              Attendance <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/MyGameAttendees/MyGameAttendees', '1800', '927')">In Game Attendee Scans</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/PercentAttendanceYOY/ShowRatesbyGame', '1600', '950')">Show Rates </div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/PercentAttendanceYOY/ShowRatesYOY', '1600', '950')">YOY Attendance</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/Comps/ByCompNameGroup', '1600', '950')">Comp Tickets</div>
+              </div>
+            </div >
+
+
+
+            <div class="dropdown-option">
+              Groups <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard(https://hornetsbi.koresoftware.com/t/CHH/views/SuitesRBTTRentals/SuiteRentals', '1366', '818')">Luxury Rentals</div>
+              </div>
+            </div >
+
+            <div class="dropdown-option">
+              Individual Games <span class="carrot">▼</span>
+              <div class="dropdown">
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/3DotsReport/3DotsReport', '1366', '2118')">IG – Primary vs. Secondary Pricing</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/BIPlatformsandServices/DynamicPricing', '1366', '818')">Dynamic Pricing Changes vs. Tickets Sold</div>
+                <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/23FSPricingPresentation/23FSStory', '1750', '1027')">IG Sellability</div><!--NEED NEW LINK-->
+              </div>
+            </div >
+
+          </div>
+        </div>
+        </div>
+
+        <!--MOBILE APP-->
         <div class="menu-item" >
-          Mobile App <span class="carrot">▼</span>
+          MOBILE APP <span class="carrot">▼</span>
           <div class="dropdown">
             <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/YinzCamData/MobileAppPageMetrics?:iid=20', 1600, 927)">App Page Metrics</div>
             <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/Pacing-AppDownloads/PacingGraph?:iid=23', 1600, 927)">Downloads Pacing</div>
@@ -148,8 +291,23 @@
           </div>
         </div>
 
+        <!--EMAIL-->
         <div class="menu-item" >
-          Innovation <span class="carrot">▼</span>
+          EMAIL <span class="carrot">▼</span>
+          <div class="dropdown">
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MarketoDashboardPastMonth/EmailDashboard?:iid=1', 1600, 950)">All Emails KPI Performance</div>
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/InterestingMomentsALL/OneEmail', 1600, 918)">One Email KPI Performance</div>
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/MarketoDashboardPastMonth/EmailAnalytics?:iid=2', 1366, 918)">Weekday + Hour Email Analysis</div>
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/EmailMarketingBenchmarks/OpenRateBenchmark', 1000, 850)">Volume + Department Email Analysis</div>
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/InterestingMomentsALL/OneEmail', 1600, 918)">One Email KPI Performance</div><!--NEED-->
+            <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/#/site/CHH/views/EmailROI/EmailROI', 1400, 991)">ROI on Individual Emails</div>
+          </div>
+        </div>
+        
+
+        <!--INNOVATION-->
+        <div class="menu-item" >
+          INNOVATION <span class="carrot">▼</span>
           <div class="dropdown">
             <div class="dropdown-option" onclick="loadDashboard('https://hornetsbi.koresoftware.com/t/CHH/views/InternalTechnologyDashboard/HSEVENDORS', 1600, 927)">Internal Tech Dashboard</div>
             <a href="https://nba.brightidea.com/HornetsInnovation/boards" target="_blank" class="dropdown-option" style="text-decoration: none; color: inherit">Innovation Hub - BrightIdea</a>
@@ -163,41 +321,89 @@
         </div>
         <!-- Add more menu items with dropdowns as needed -->
       </div>
-  <div id="content">
-    <tableau-viz id="tableauViz" src="https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504" width="1366" height="952" hide-tabs toolbar="bottom"></tableau-viz>
-  </div>
-  <script>
-    const menuItems = document.querySelectorAll('.menu-item');
-
-    menuItems.forEach(menuItem => {
-      const dropdown = menuItem.querySelector('.dropdown');
-
-      menuItem.addEventListener('click', () => {
-        // Toggle the 'open' class on the dropdown
-        dropdown.classList.toggle('open');
-      });
-    });
-    const dropdownOptions = document.querySelectorAll('.dropdown-option');
-
-dropdownOptions.forEach(option => {
-  option.addEventListener('click', function (event) {
-    event.stopPropagation(); // Prevent the click from propagating to the main menu-item
-  });
-});
+       <div id="content">
+    <tableau-viz id="tableauViz" hide-tabs toolbar="bottom"></tableau-viz>
+  </div>     
+      <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+      <script>
+        
+        const defaultDashboardURL = 'https://hornetsbi.koresoftware.com/t/CHH/views/HornetsHomeBase/HornetsHomeBase';
+        const tableauViz = document.getElementById('tableauViz');
+        const dashboardLinks = {
+          'F&B': 'https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504',
+          'Ticketing': 'https://hornetsbi.koresoftware.com/t/CHH/views/MobileOrderTransactions/SeasonSummary/e4fb4886-41d2-4027-bd69-4f56a5b669a0/676c41c1-08cb-4fda-bcf5-fbe9f476d504',
+          // Add more dashboard links as needed...
+        };
+    
+        const content = document.getElementById('content');
+    
     function loadDashboard(src, width, height) {
-      const tableauViz = document.getElementById('tableauViz');
       tableauViz.setAttribute('src', src);
       tableauViz.setAttribute('width', width);
       tableauViz.setAttribute('height', height);
     }
 
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const content = document.getElementById('content');
-      sidebar.classList.toggle('collapsed');
-      content.classList.toggle('collapsed');
+    function adjustDashboardSize() {
+      const availableWidth = content.clientWidth - 40; // Adjust for padding and margins
+      loadDashboard(defaultDashboardURL, `${availableWidth}`, '1000');
     }
 
+    window.addEventListener('resize', adjustDashboardSize);
+
+    // Load default dashboard when the page loads
+    adjustDashboardSize();
+    
+        function loadDefaultDashboard() {
+          loadDashboard(defaultDashboardURL, '1600', '927');
+        }
+    
+        loadDefaultDashboard(); // Load the default dashboard when the page loads
+    
+        const menuItems = document.querySelectorAll('.menu-item');
+    
+        menuItems.forEach(menuItem => {
+          const dropdown = menuItem.querySelector('.dropdown');
+          const dashboardLink = dashboardLinks[menuItem.textContent.trim()]; // Get the corresponding dashboard link
+    
+          menuItem.addEventListener('click', (event) => {
+            event.stopPropagation();
+    
+            // Toggle open/close
+            dropdown.classList.toggle('open');
+    
+            // Close other open dropdowns
+            document.querySelectorAll('.menu-item .dropdown.open').forEach(openDropdown => {
+              if (openDropdown !== dropdown) {
+                openDropdown.classList.remove('open');
+              }
+            });
+    
+            // Load the clicked dashboard if available
+            if (dashboardLink) {
+              loadDashboard(dashboardLink, '1600', '927');
+            }
+          });
+    
+          // Find all dropdown options and add click event listeners
+          const dropdownOptions = menuItem.querySelectorAll('.dropdown-option');
+          dropdownOptions.forEach(option => {
+            option.addEventListener('click', (event) => {
+              event.stopPropagation();
+              // Find the sub-dropdown and toggle open/close
+              const subDropdown = option.querySelector('.dropdown');
+              if (subDropdown) {
+                subDropdown.classList.toggle('open');
+              }
+            });
+          });
+        });
+    
+        function toggleSidebar() {
+          const sidebar = document.getElementById('sidebar');
+          const content = document.getElementById('content');
+          sidebar.classList.toggle('collapsed');
+          content.classList.toggle('collapsed');
+        }
   </script>
 </body>
 </html>
