@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newcomer Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .message-container {
+            margin-bottom: 10px;
+            overflow-y: auto;
+            max-height: 500px; /* Increased height */
+        }
+        .message {
+            background-color: #e5e5ea;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+            max-width: 70%;
+            position: relative;
+        }
+        .message.bot {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Charlotte_Hornets_%282014%29.svg/440px-Charlotte_Hornets_%282014%29.svg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -15px;
+            left: -40px; /* Adjusted position */
+        }
+        .avatar:before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -2px;
+            left: -2px;
+        }
+        .message.user {
+    text-align: right; /* Aligns the user's messages to the right */
+    margin-left: auto; /* Ensures the message bubble appears on the right */
+    margin-right: 0; /* Resets margin-right */
+}
+
+.message.user .avatar {
+    left: auto; /* Resets left position */
+    right: -40px; /* Adjusts the avatar position for user messages */
+}
+
+.message.user .avatar:before {
+    left: auto; /* Resets left position */
+    right: -2px; /* Adjusts the avatar before pseudo-element position for user messages */
+}
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Page</h1>
+        <div class="message-container" id="messageContainer"></div>
+    </div>
+    <script
+    src="https://unpkg.com/react-stackai@latest/dist/vanilla/vanilla-stackai.js"
+    data-project-url="https://www.stack-ai.com/embed/ac522f2a-ccb2-4608-8bab-3e1ccf74af42/f39536ea-6cd4-4afe-ac99-bd9babd2cd21/666b0db4ac0fa1cbef862a2e">
+  </script>
+        
+    <script>
+
+</script>
+</body>
+</html>
